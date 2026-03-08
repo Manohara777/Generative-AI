@@ -1,5 +1,7 @@
 # Retrieval-Augmented Generation (RAG) Notes
 
+whiteboard Link -> https://www.icloud.com/freeform-copy/CC6DB8A9-1001-4E07-B2C1-8B3DE231F223#RAG
+
 ## 1) RAG Overview
 
 Retrieval-Augmented Generation (RAG) is an architecture that combines:
