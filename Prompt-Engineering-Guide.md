@@ -1,39 +1,100 @@
 # Prompt Engineering Guide
 
 ## Introduction to Programmatic Prompting
-Prompt engineering is a critical technique in the field of artificial intelligence and machine learning, particularly in natural language processing (NLP). It involves designing effective prompts that guide AI models to generate informative and relevant responses. Prompting can dramatically impact the AI's output, making it an essential skill for developers and data scientists working with generative models.
+
+Programmatic prompting involves creating structured queries that can be adapted dynamically to the model's responses. This technique leverages artificial intelligence capabilities to generate prompts programmatically based on user inputs and requirements.
 
 ## Prompt Components
-A well-structured prompt typically consists of several components:
-1. **Context**: Provides background information or sets the scene for the AI.
-2. **Instructions**: Clearly articulates what the AI is required to do.
-3. **Examples**: Can include examples of desired input/output pairs to guide the AI.
-4. **Constraints**: Specifies any restrictions that the output must adhere to (length, format, etc.).
 
-## Templates
-Templates are predefined structures that can be reused for similar tasks. Creating prompt templates can save time and ensure consistency in outputs. Examples include:
-- **Question Templates**: “What are the benefits of [topic]?”
-- **Instruction Templates**: “Explain the concept of [topic]. It should include [specific points].”
+1. **Context**: This lays the groundwork for the AI's response by providing background.
+2. **Instruction**: Clear guidelines on what the AI should achieve.
+3. **Examples**: Sample inputs and outputs to guide the AI towards desired behaviors.
+
+## Creating Prompt Templates with Dynamic Variables
+
+Templates can be created using placeholders for variables. For example:
+```
+"Please summarize the following text: {{ text }}"
+```
+By filling in the variable `text`, the prompt can be dynamically generated based on different inputs.
 
 ## Prompting Patterns
-Recognizing patterns in prompting can help create more effective queries. Some common patterns include:
-- **Direct Asking**: Directly ask a question or request information.
-- **Role Playing**: Assign the AI a role (e.g., "You are a teacher explaining...") to create a specific tone or expertise.
+
+### Few-shot Prompts
+Provide a few examples that illustrate the task clearly to the model, helping it understand the desired output.
+
+### Role-based Prompts
+Instruct the model to behave as a specific entity, e.g., "You are a knowledgeable assistant...".
+
+### Chain-of-Thought Prompts
+Encourage the model to lay out its reasoning process step-by-step.
 
 ## Best Practices
-- **Be Specific**: The more details provided in the prompt, the better the output.
-- **Iterate**: Experiment with different prompts for improved results.
-- **Use Feedback**: Utilize AI feedback to refine prompts over time.
+- Keep prompts concise and clear.
+- Use specific instructions and examples.
+- Experiment with different formulations to find what works best.
 
-## Mini Project
-### Project Name: Recipe Generator
-**Objective**: Create a generative AI tool that can create unique recipes based on user preferences.
+## Mini Project 1: Text Summarizer
+### Overview
+Create a summarization tool using a pre-trained model that generates concise summaries from lengthy documents.
+### Implementation
+Code Example:
+```python
+import openai
 
-#### Steps:
-1. **Define User Input**: Design prompts to gather user preferences (e.g., dietary restrictions, favorite ingredients).
-2. **Craft the Prompts**: Based on the components and templates discussed, build effective prompts for generating recipes.
-3. **Test and Iterate**: Evaluate the outputs and adjust prompts as necessary to enhance the quality of the recipes.
+def summarize_text(text):
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=f"Summarize this: {text}",
+        max_tokens=50
+    )
+    return response.choices[0].text.strip()
+```
 
-This project aims to demonstrate the power of prompt engineering in creating useful applications for users in culinary experiences!  
+### Architecture Diagram
+![Architecture Diagram](link_to_your_diagram)
 
----
+## Mini Project 2: Q&A System
+### Overview
+Create a question-answering system that allows users to ask questions against a knowledge base.
+### Implementation
+Code Example:
+```python
+import openai
+
+def answer_question(question):
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=f"Answer the question: {question}",
+        max_tokens=150
+    )
+    return response.choices[0].text.strip()
+```
+
+### Architecture Diagram
+![Architecture Diagram](link_to_your_diagram)
+
+## Mini Project 3: Content Rewriter
+### Overview
+Build a tool that rewrites content in different styles based on user input.
+### Implementation
+Code Example:
+```python
+import openai
+
+def rewrite_content(content):
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=f"Rewrite this content: {content}",
+        max_tokens=200
+    )
+    return response.choices[0].text.strip()
+```
+
+### Architecture Diagram
+![Architecture Diagram](link_to_your_diagram)
+
+## Real-world Examples
+- Example of text summarization applied in journalism for article summaries.
+- Q&A systems used in customer service for instant responses.
+- Content rewriting used in marketing to generate multiple versions of ad copy.
