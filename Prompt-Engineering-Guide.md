@@ -1,100 +1,63 @@
-# Prompt Engineering Guide
+# Programmatic Prompting in Generative AI
 
 ## Introduction to Programmatic Prompting
 
-Programmatic prompting involves creating structured queries that can be adapted dynamically to the model's responses. This technique leverages artificial intelligence capabilities to generate prompts programmatically based on user inputs and requirements.
+Programmatic prompting involves using structured methods to create prompts that guide the behavior of generative models. It allows developers to leverage the capabilities of AI in more controlled and effective ways.
 
 ## Prompt Components
 
-1. **Context**: This lays the groundwork for the AI's response by providing background.
-2. **Instruction**: Clear guidelines on what the AI should achieve.
-3. **Examples**: Sample inputs and outputs to guide the AI towards desired behaviors.
+A well-crafted prompt typically consists of the following components:
+- **Context**: Sets the stage for what the model should consider.
+- **Task Definition**: Clearly states what is expected from the model.
+- **Examples**: Provides illustrations to guide the model’s understanding.
 
 ## Creating Prompt Templates with Dynamic Variables
 
-Templates can be created using placeholders for variables. For example:
+Prompt templates can include dynamic variables that allow for greater flexibility. For example:
+- **Template**: "Generate a story about [TOPIC]"  
+  - **Dynamic Variable**: `TOPIC`
+
+### Example template with dynamic variables:
+```markdown
+Generate a [GENRE] story about [TOPIC] in [FORMAT].
 ```
-"Please summarize the following text: {{ text }}"
-```
-By filling in the variable `text`, the prompt can be dynamically generated based on different inputs.
 
 ## Prompting Patterns
 
-### Few-shot Prompts
-Provide a few examples that illustrate the task clearly to the model, helping it understand the desired output.
+### Few-shot Prompting
+Provides a few examples to inform the model on how to respond:
+```markdown
+Example 1:
+Input: "What is the capital of France?"
+Output: "Paris"
 
-### Role-based Prompts
-Instruct the model to behave as a specific entity, e.g., "You are a knowledgeable assistant...".
+Example 2:
+Input: "What is the capital of Germany?"
+Output: "Berlin"
+```
 
-### Chain-of-Thought Prompts
-Encourage the model to lay out its reasoning process step-by-step.
+### Role-based Prompting
+Assigns a specific role to the model:
+```markdown
+You are a helpful assistant.
+Question: "How do I cook spaghetti?"
+Answer: "To cook spaghetti, boil water and add salt..."
+```
+
+### Chain-of-Thought Prompting
+Encourages the model to think through a problem step-by-step:
+```markdown
+1. Identify the problem.
+2. Break it down into smaller parts.
+3. Solve each part methodically.
+```
 
 ## Best Practices
-- Keep prompts concise and clear.
-- Use specific instructions and examples.
-- Experiment with different formulations to find what works best.
 
-## Mini Project 1: Text Summarizer
-### Overview
-Create a summarization tool using a pre-trained model that generates concise summaries from lengthy documents.
-### Implementation
-Code Example:
-```python
-import openai
+### Context Management
+- Always provide relevant context to avoid ambiguity.
+- Tailor the context to the specific task.
 
-def summarize_text(text):
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=f"Summarize this: {text}",
-        max_tokens=50
-    )
-    return response.choices[0].text.strip()
-```
-
-### Architecture Diagram
-![Architecture Diagram](link_to_your_diagram)
-
-## Mini Project 2: Q&A System
-### Overview
-Create a question-answering system that allows users to ask questions against a knowledge base.
-### Implementation
-Code Example:
-```python
-import openai
-
-def answer_question(question):
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=f"Answer the question: {question}",
-        max_tokens=150
-    )
-    return response.choices[0].text.strip()
-```
-
-### Architecture Diagram
-![Architecture Diagram](link_to_your_diagram)
-
-## Mini Project 3: Content Rewriter
-### Overview
-Build a tool that rewrites content in different styles based on user input.
-### Implementation
-Code Example:
-```python
-import openai
-
-def rewrite_content(content):
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=f"Rewrite this content: {content}",
-        max_tokens=200
-    )
-    return response.choices[0].text.strip()
-```
-
-### Architecture Diagram
-![Architecture Diagram](link_to_your_diagram)
-
-## Real-world Examples
-- Example of text summarization applied in journalism for article summaries.
-- Q&A systems used in customer service for instant responses.
-- Content rewriting used in marketing to generate multiple versions of ad copy.
+### Prompt Injection Safety
+- Sanitize inputs to prevent unintended commands being executed by the model.
+- Employ techniques to validate inputs and outputs to ensure safety.
