@@ -1,5 +1,7 @@
 # Programmatic Prompting in Generative AI
 
+Whiteboard Link -> https://www.icloud.com/freeform-copy/C424E937-D5B2-4B7F-974A-859C2FF256B7#Prompt_engineering
+
 ## 1. Introduction to Programmatic Prompting
 
 Programmatic prompting is the practice of generating prompts in code instead of manually typing them each time in a chat interface. In real AI applications, prompts are assembled dynamically from user input, business rules, retrieved context, and application state.
