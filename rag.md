@@ -1,48 +1,5 @@
 # Retrieval-Augmented Generation (RAG) Notes
 
-
-## How to find these changes in the correct Git repository
-
-If you cannot see this file or commit in your local machine, verify you are in the same repository and branch where the change was made.
-
-### Quick verification commands
-```bash
-pwd
-git rev-parse --show-toplevel
-git remote -v
-git branch --show-current
-git log --oneline -n 5
-```
-
-### What to check
-- **Repository root** should be `Generative-AI` (or your local clone of `pranavkumarpk01/Generative-AI`).
-- **Branch** should match the branch where the commit was pushed/opened.
-- **Commit history** should include the commit that added this file.
-
-### Locate this exact file
-```bash
-# From repo root
-ls rag.md
-
-# Show tracked location
-git ls-files | rg '^rag\.md$'
-
-# Open file quickly
-sed -n '1,80p' rag.md
-```
-
-### If still missing
-```bash
-git fetch --all --prune
-git checkout <branch-name>
-git pull
-```
-Then re-run:
-```bash
-git log --oneline -- rag.md
-```
-
----
 ## 1) RAG Overview
 
 Retrieval-Augmented Generation (RAG) is an architecture that combines:
